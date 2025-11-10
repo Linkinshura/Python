@@ -61,3 +61,150 @@ print(x > 0 and y > 0)  # True
 print(x > 0 or y < 0)   # True
 print(not(x < y))       # True
 ```
+
+### Operadores de Asignación en Python
+
+Los operadores de asignación se utilizan para **dar valor a una variable** o **actualizar su contenido** sin necesidad de escribir expresiones largas.
+
+---
+
+#### Asignación simple
+
+El operador `=` asigna el valor de la derecha a la variable de la izquierda.
+
+```python
+x = 10
+nombre = "Python"
+activo = True
+```
+
+### Operadores de Pertenencia en Python
+
+Los operadores de pertenencia permiten **verificar si un valor se encuentra dentro** de una secuencia o estructura de datos como listas, cadenas, tuplas, conjuntos o diccionarios.
+
+Devuelven un valor booleano (`True` o `False`).
+
+---
+
+## Tipos de operadores de pertenencia
+
+| Operador | Descripción | Ejemplo | Resultado |
+|-----------|--------------|----------|------------|
+| `in` | Devuelve `True` si el elemento está en la secuencia | `'a' in 'python'` | `False` |
+| `not in` | Devuelve `True` si el elemento **no** está en la secuencia | `'z' not in 'python'` | `True` |
+
+---
+
+#### Ejemplos con distintos tipos de datos
+
+##### 1. Cadenas de texto
+
+```python
+texto = "Python"
+
+print("P" in texto)       # True
+print("p" in texto)       # False (mayúsculas y minúsculas importan)
+print("th" in texto)      # True (subcadena)
+print("z" not in texto)   # True
+```
+
+##### 2. Tuplas
+
+```python
+tupla = ("rojo", "verde", "azul")
+
+print("verde" in tupla)      # True
+print("amarillo" not in tupla)  # True
+```
+
+##### 3. Filas
+
+```python
+numeros = [10, 20, 30, 40]
+
+print(20 in numeros)       # True
+print(50 not in numeros)   # True
+print(10 in numeros)       # True
+```
+
+##### 4. Conjuntos
+
+```python
+colores = {"rojo", "verde", "azul"}
+
+print("rojo" in colores)   # True
+print("negro" not in colores)  # True
+```
+
+##### 5. Diccionarios
+
+```python
+persona = {"nombre": "Ian", "edad": 18}
+
+print("nombre" in persona)       # True (verifica claves)
+print("Ian" in persona)          # False (no busca valores)
+print("edad" not in persona)     # False
+print("Ian" in persona.values()) # True (verifica valores)
+```
+
+### Operadores de Identidad en Python
+
+Los operadores de identidad se utilizan para **comparar si dos variables hacen referencia al mismo objeto en memoria**, no si tienen el mismo valor.
+
+Estos operadores devuelven un valor booleano (`True` o `False`).
+
+---
+
+#### Tipos de operadores de identidad
+
+| Operador | Descripción | Ejemplo | Resultado |
+|-----------|--------------|----------|------------|
+| `is` | Devuelve `True` si ambas variables apuntan al mismo objeto en memoria | `a is b` | Depende |
+| `is not` | Devuelve `True` si las variables apuntan a objetos distintos | `a is not b` | Depende |
+
+---
+
+#### Ejemplo básico
+
+```python
+a = [1, 2, 3]
+b = a
+c = [1, 2, 3]
+
+print(a is b)      # True  (ambas referencias apuntan al mismo objeto)
+print(a is c)      # False (contenido igual, pero distinto objeto)
+print(a == c)      # True  (contenido igual)
+```
+
+#### Ejemplo con objetos Inmutables
+
+En Python, los objetos inmutables (como **int**, **float**, **str**, **tuple**) pueden compartir la misma referencia por optimización interna.
+
+```python
+x = 5
+y = 5
+print(x is y)   # True  (por optimización)
+
+a = "hola"
+b = "hola"
+print(a is b)   # True  (las cadenas cortas pueden compartir referencia)
+```
+
+Sin embargo, esto no debe asumirse siempre. Por ejemplo:
+
+```python
+x = 1000
+y = 1000
+print(x is y)   # Puede ser False, depende del intérprete
+```
+
+#### Ejemplo con **none**
+
+Una práctica común es usar **is** o **is not** para comparar con **None**.
+
+```python
+x = None
+
+if x is None:
+    print("La variable no tiene valor asignado.")
+```
